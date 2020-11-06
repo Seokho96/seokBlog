@@ -1,0 +1,22 @@
+{"properties": [
+  {
+    "name": "spring.data.maria.jdbc-url",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.data.maria.jdbc-url'"
+  },
+  {
+    "name": "spring.data.maria.driver-class-name",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.data.maria.driver-class-name'"
+  },
+  {
+    "name": "spring.data.maria.username",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.data.maria.username'"
+  },
+  {
+    "name": "spring.data.maria.password",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.data.maria.password'"
+  }
+]}

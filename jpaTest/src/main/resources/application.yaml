@@ -1,0 +1,31 @@
+# server
+server:
+ port: 8888
+
+# RDS (DB)
+
+spring:
+  #data:
+   #maria:
+     #jdbc-url: jdbc:mariadb://seokdata.cxemosuoeohw.ap-northeast-2.rds.amazonaws.com:3309/seokdata?useUnicode=yes&characterEncoding=UTF-8
+     #driver-class-name: org.mariadb.jdbc.Driver
+     #username: seokdata96
+     #password: masterkang96
+     
+  data:
+   maria:
+     jdbc-url: jdbc:mariadb://localhost:3306/seokblog?useUnicode=yes&characterEncoding=UTF-8
+     driver-class-name: org.mariadb.jdbc.Driver
+     username: seokho96
+     password: seokho96
+  
+
+
+  jpa:
+    properties:
+      hibernate:  
+        format_sql: true
+        temp:    
+          use_jdbc_metadata_defaults: false
+    generate-ddl: true     
+      
