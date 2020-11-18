@@ -44,7 +44,12 @@ public class helloController {
 	 @PostMapping("/join")
 	 public String join( String userId, String password, String name) {
 		 System.out.println("join");
-	   return service.join(userId, password, name);
+		 member mem = service.nameCheck(name);
+		 if(mem != null) {
+			 return "nameError";
+		 }else {
+			 return service.join(userId, password, name);
+		 } 
 	 }
 	 
 	 @PostMapping("/login")
@@ -53,8 +58,8 @@ public class helloController {
 		  member mem = service.login(userId, password);
 		  String a = "";
 		  if(mem != null) {
-			  session.setAttribute("s_Kg234", mem);
-			  a = "success";
+			 
+			  a = mem.getName();
 		  }else {
 			   a = "fail";
 		  }

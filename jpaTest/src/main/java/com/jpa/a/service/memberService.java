@@ -54,5 +54,9 @@ public class memberService {
 	
 		return memberRepository.findMember(userId, password);
 	}
+	
+	public member nameCheck( String name) {
+		return memberRepository.nameCheck(name); 
+	}
 
 }

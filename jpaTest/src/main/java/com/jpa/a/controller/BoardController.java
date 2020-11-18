@@ -25,11 +25,12 @@ public class BoardController {
 	@Autowired
 	BoardRepository boardRepository;
 	
-	
-	@GetMapping("/insert")
-	public Board insert() {
-		return boardRepository.save(new Board((long) 1, "Paper House", "* Paper House는 작가의 꿈을 가진 남녀노소 누구나 자신의 글을 집필하고 ‘신인 작가’로서 데뷔할 수 있는 플랫폼입니다.", "IU2.gif", "project", new Date()));
-	}
+	/*
+	 * @GetMapping("/insert") public Board insert() { return
+	 * boardRepository.save(new Board((long) 1, "Paper House",
+	 * "* Paper House는 작가의 꿈을 가진 남녀노소 누구나 자신의 글을 집필하고 ‘신인 작가’로서 데뷔할 수 있는 플랫폼입니다.",
+	 * "IU2.gif", "project", new Date())); }
+	 */
 	
 	
 	@GetMapping("/getList")

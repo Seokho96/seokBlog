@@ -36,14 +36,10 @@ public class CommentController {
 	}
 	
 	
-	  @PostMapping("/write") public String writeComment(String conts, HttpServletRequest request) {
-	      member mem =  (member)request.getSession().getAttribute("s_Kg234");
-	      if(mem == null) {
-	    	 String ab = "loginFalse";
-	    	 
-	    	 return ab;
-	      }
-	      String userName =  mem.getName();
+	  @PostMapping("/write") public String writeComment(String conts, String name, HttpServletRequest request) {
+	      
+	    
+	      String userName =  name;
 	      
 	      String a = commentService.writeComment(conts, userName);
 	      
