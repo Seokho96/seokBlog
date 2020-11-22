@@ -40,5 +40,20 @@ public class CommentService {
 		return a;
 		
 	}
+	
+	public String deleteComment (Long commentSeq, String userName) {
+		
+		String a = "";
+		
+	try {
+		commentRepository.deleteComment(commentSeq, userName);
+	} catch (Exception e) {
+		a = "fail";
+	}
+	finally {
+		a = "success";
+	}
+	       return a;
+	}
 
 }

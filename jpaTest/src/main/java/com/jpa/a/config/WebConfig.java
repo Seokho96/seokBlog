@@ -19,5 +19,6 @@ public class WebConfig implements WebMvcConfigurer{
 		registry.addMapping("/user/**").allowCredentials(true);
 		registry.addMapping("/board/**").allowCredentials(true);
 		registry.addMapping("/comment/**").allowCredentials(true);
+		registry.addMapping("/infoBoard/**").allowCredentials(true);
 	}
 }

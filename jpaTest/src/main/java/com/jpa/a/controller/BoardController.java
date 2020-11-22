@@ -34,9 +34,15 @@ public class BoardController {
 	
 	
 	@GetMapping("/getList")
-	public List<Board> getList(HttpServletRequest request){
+	public List<Board> getList(String category){
 
-		return service.getList();
+		return service.getList(category);
+	}
+	
+	@GetMapping("/getMiniList")
+	public List<Board> getMiniList(String category){
+
+		return service.getMini(category);
 	}
 	
 

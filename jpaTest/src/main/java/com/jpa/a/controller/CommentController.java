@@ -30,13 +30,14 @@ public class CommentController {
 	
 	
 	@GetMapping("/getList")
-	public List<Comment> getList(HttpSession session, HttpServletRequest request) {
+	public List<Comment> getList() {
+		
 		  System.out.print("commentList");
 		 return commentService.getList();
 	}
 	
 	
-	  @PostMapping("/write") public String writeComment(String conts, String name, HttpServletRequest request) {
+	  @PostMapping("/write") public String writeComment(String conts, String name) {
 	      
 	    
 	      String userName =  name;
@@ -46,6 +47,16 @@ public class CommentController {
 	      return a;
 	      
 	 }
+	  
+	  @PostMapping("/delete") public String deleteComment(Long commentSeq, String userName) {
+	         
+	      String a = commentService.deleteComment(commentSeq, userName);
+	      
+	      return a;
+	      
+	 }
+	  
+	  
 	 
 
 }

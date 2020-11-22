@@ -14,7 +14,11 @@ public class BoardService {
 	@Autowired
 	BoardRepository boardRepository;
 	
-	public List<Board> getList() {
-		return boardRepository.findAll();
+	public List<Board> getList( String category) {
+		return boardRepository.findAll(category);
+	}
+	
+	public List<Board> getMini( String category) {
+		return boardRepository.findMini(category);
 	}
 }

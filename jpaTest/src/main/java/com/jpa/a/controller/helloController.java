@@ -53,7 +53,7 @@ public class helloController {
 	 }
 	 
 	 @PostMapping("/login")
-	 public String login( String userId , String password, HttpServletRequest request, HttpSession session ) {
+	 public String login( String userId , String password) {
 		 
 		  member mem = service.login(userId, password);
 		  String a = "";
@@ -66,23 +66,7 @@ public class helloController {
 		  return a;
 	 }
 	 
-	 @GetMapping("/loginCheck")
-	 public String loginCheck(HttpServletRequest request) {
-		member mem =  (member)request.getSession().getAttribute("s_Kg234");
-		String userName = "";
-		if(mem != null) {
-			 userName =  mem.getName();
-		}else {
-			userName = "";
-		}
-		
-		 return userName;
-	 }
-	 
-	 @PostMapping("/logout")
-	 public void logout(HttpSession session) {
-		 session.removeAttribute("s_Kg234");
-	 }
+	
 	
 	
     
