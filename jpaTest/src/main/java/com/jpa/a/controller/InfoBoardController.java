@@ -33,12 +33,12 @@ public class InfoBoardController {
 		 SimpleDateFormat format2 = new SimpleDateFormat ( "yyyy년 MM월dd일 HH시mm분ss초");
 		 Date date = new Date();
 		 String wdate = format2.format(date);
-		 return infoBoardRepository.save( new InformationBoard("석", "테스트중입니다3", "아 테스형~ 세상이 왜이래3", null, "info", wdate));
+		 return infoBoardRepository.save( new InformationBoard("석", "테스트중입니다11", "아 테스형~ 세상이 왜이래11", null, "info", wdate));
 	 
 	 }
 	 
 	
-	@GetMapping("/getList") public List<InformationBoard> getList(@PageableDefault(size = 10) Pageable pageRequest){
+	@GetMapping("/getList") public List<InformationBoard> getList(@PageableDefault(size = 5) Pageable pageRequest){
 			
 		System.out.println("getList");
 		Page<InformationBoard> list = infoBoardRepository.findAll(pageRequest); 
@@ -48,6 +48,19 @@ public class InfoBoardController {
 		return last;
 		
 	}
+	
+	@GetMapping("/pageCount") public int pageCount(){
+		
+		System.out.println("pageCount");
+		List<InformationBoard> list = infoBoardRepository.findAll();
+        
+		int count = list.size();
+		
+		return count;
+		
+	}
+	
+	
 	
 	 @PostMapping("/write") public InformationBoard write(String userName, String title, String conts, String image, String category) { 
 		 

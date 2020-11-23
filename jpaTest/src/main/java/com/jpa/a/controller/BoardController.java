@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -33,9 +34,9 @@ public class BoardController {
 	 */
 	
 	
-	@GetMapping("/getList")
+	@PostMapping("/getList")
 	public List<Board> getList(String category){
-
+       System.out.print(category);
 		return service.getList(category);
 	}
 	
