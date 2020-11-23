@@ -34,7 +34,7 @@ public class BoardController {
 	 */
 	
 	
-	@PostMapping("/getList")
+	@GetMapping("/getList")
 	public List<Board> getList(String category){
        System.out.print(category);
 		return service.getList(category);
