@@ -23,7 +23,7 @@ public class InformationBoard {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long InfoBoardSeq;
+	private Long infoBoardSeq;
 	
 	@NonNull
 	@Column(name = "userName", nullable = false, updatable = false)

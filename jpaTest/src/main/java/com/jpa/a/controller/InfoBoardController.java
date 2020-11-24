@@ -13,8 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.jpa.a.dto.InformationBoardDto;
+import org.springframework.data.domain.Sort;
 import com.jpa.a.entity.InformationBoard;
 import com.jpa.a.repository.InfoBoardRepository;
 
@@ -28,17 +27,18 @@ public class InfoBoardController {
 	
 	
 	
-	 
+	
 	 @GetMapping("/insert") public InformationBoard insert() { 
 		 SimpleDateFormat format2 = new SimpleDateFormat ( "yyyy년 MM월dd일 HH시mm분ss초");
 		 Date date = new Date();
 		 String wdate = format2.format(date);
-		 return infoBoardRepository.save( new InformationBoard("석", "테스트중입니다11", "아 테스형~ 세상이 왜이래11", null, "info", wdate));
+		 return infoBoardRepository.save( new InformationBoard("석", "테스트중입니다13", "아 테스형~ 세상이 왜이래13", null, "info", wdate));
 	 
 	 }
 	 
+	 
 	
-	@GetMapping("/getList") public List<InformationBoard> getList(@PageableDefault(size = 5) Pageable pageRequest){
+	@GetMapping("/getList") public List<InformationBoard> getList(@PageableDefault(size = 5, direction = Sort.Direction.DESC, sort = {"infoBoardSeq"}) Pageable pageRequest){
 			
 		System.out.println("getList");
 		Page<InformationBoard> list = infoBoardRepository.findAll(pageRequest); 
