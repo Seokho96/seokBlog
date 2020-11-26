@@ -18,7 +18,10 @@ public interface InfoBoardRepository extends JpaRepository<InformationBoard, Lon
 	
 	
 	Page<InformationBoard> findAll(Pageable pageable);
-		
+	
+	@Query("select i from InformationBoard i where i.infoBoardSeq = :infoBoardSeq")
+	List<InformationBoard> infoBoardDetail(@Param("infoBoardSeq") Long infoBoardSeq);
+	
 	@Query("delete from InformationBoard c where c.infoBoardSeq = :infoBoardSeq")
 	void deleteInfo(@Param("infoBoardSeq") Long infoBoardSeq);
 	

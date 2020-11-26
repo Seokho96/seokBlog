@@ -1,6 +1,8 @@
 # server
 server:
  port: 8888
+ max-http-header-size: 40000
+      
 
 # RDS (DB)
 
@@ -13,7 +15,6 @@ spring:
      password: masterkang96
 
   
-
 
   jpa:
     properties:
