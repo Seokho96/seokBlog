@@ -57,7 +57,7 @@ public class InfoBoardService {
 	
    public void write(String userName, String title, String conts, String image, String category) { 
 	   
-		 SimpleDateFormat format2 = new SimpleDateFormat ( "yyyy년 MM월dd일 HH시mm분ss초");
+		 SimpleDateFormat format2 = new SimpleDateFormat ( "yyyy. MM. dd. HH:mm");
 		 Date date = new Date();
 		 String wdate = format2.format(date);
 		 
