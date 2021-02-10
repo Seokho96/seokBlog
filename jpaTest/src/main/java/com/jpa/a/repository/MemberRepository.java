@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import com.jpa.a.entity.InformationBoard;
 import com.jpa.a.entity.member;
 
 @Repository
@@ -21,5 +22,7 @@ public interface MemberRepository extends JpaRepository<member, Long>{
 	
 	@Query("select u from member u where u.name = :name")
     member nameCheck(@Param("name") String name);
+	
+
 
 }

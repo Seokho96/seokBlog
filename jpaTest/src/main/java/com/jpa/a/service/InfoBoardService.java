@@ -20,15 +20,20 @@ public class InfoBoardService {
 	
   public List<InformationBoard> findAll(Pageable pageable){
 	  
-	    Page<InformationBoard> list = infoBoardRepository.findAll(pageable); 
+	    Page<InformationBoard> list = infoBoardRepository.findByDelDateIsNull(pageable); 
 		
 		List<InformationBoard> last = list.getContent();
-	    
+	   
 		for (int i = 0; i < last.size(); i++) {
 			last.get(i).setConts(last.get(i).getConts().replace("<br/>", ""));
 		}
 		
 	  return last;
+  }
+  public int getTotalPageCount() {
+	  List<InformationBoard> totalPage = infoBoardRepository.findByDelDateIsNull();
+	  int tp = totalPage.size();
+	  return tp;		  
   }
 	
 	
@@ -39,19 +44,22 @@ public class InfoBoardService {
 	   return detail;
    }
    
-   public int pageCount(){
-		
-		List<InformationBoard> list = infoBoardRepository.findAll();
-       
-		int count = list.size();
-		
-		return count;
-		
-	}
+//   public int pageCount(){
+//		
+//		List<InformationBoard> list = infoBoardRepository.findAll();
+//       
+//		int count = list.size();
+//		
+//		return count;
+//		
+//	}
    
-   public void delete(String infoBoardSeq) { 
+   public void delete(Long infoBoardSeq) { 
+	     SimpleDateFormat format2 = new SimpleDateFormat ( "yyyy. MM. dd. HH:mm");
+		 Date date = new Date();
+		 String delDate = format2.format(date);
 		 
-		infoBoardRepository.deleteInfo(Long.parseLong(infoBoardSeq));
+		infoBoardRepository.deleteInfo(infoBoardSeq, delDate);
 	 
 	 }
 	
@@ -74,4 +82,15 @@ public class InfoBoardService {
 		 
    	infoBoardRepository.updateInfo(Long.parseLong(infoBoardSeq), title, conts, image, wdate);
    }
+	
+	public Long nextBoard(Long infoBoardSeq) {
+		
+		InformationBoard detail = infoBoardRepository.findTop1ByInfoBoardSeqGreaterThanOrderByInfoBoardSeqAsc(infoBoardSeq).get(0);
+		
+		Long Seq = detail.getInfoBoardSeq();
+		
+		return Seq;
+		
+		
+	}
 }

@@ -1,6 +1,8 @@
 package com.jpa.a.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -35,21 +37,26 @@ public class InfoBoardController {
 	 
 	 
 	
-	@GetMapping("/getList") public List<InformationBoard> getList(@PageableDefault(size = 5, direction = Sort.Direction.DESC, sort = {"infoBoardSeq"}) Pageable pageRequest){
+	@GetMapping("/getList") public Map<String , Object> getList(@PageableDefault(size = 5, direction = Sort.Direction.DESC, sort = {"infoBoardSeq"}) Pageable pageRequest){
 			
 		List<InformationBoard> last = infoBoardService.findAll(pageRequest); 
+		int page = infoBoardService.getTotalPageCount();
+        Map<String , Object> map = new HashMap<String, Object>();
 		
-		return last;
+		map.put("list", last);
+		map.put("totalPage", page);
 		
-	}
-	
-	@GetMapping("/pageCount") public int pageCount(){
-			
-		int count = infoBoardService.pageCount();
-        
-		return count;
+		return map;
 		
 	}
+//	
+//	@GetMapping("/pageCount") public int pageCount(){
+//			
+//		int count = infoBoardService.pageCount();
+//        
+//		return count;
+//		
+//	}
 	
 	
 	 @PostMapping("/write") public void write(String userName, String title, String conts, String image, String category) { 
@@ -58,8 +65,8 @@ public class InfoBoardController {
 	
 	 }
 	 
-    @PostMapping("/delete") public void delete(String infoBoardSeq) { 
-		 
+    @PostMapping("/delete") public void delete(Long infoBoardSeq) { 
+		 System.out.println("#################" + infoBoardSeq);
     	infoBoardService.delete(infoBoardSeq);
 	 
 	 }
@@ -73,5 +80,14 @@ public class InfoBoardController {
  	   System.out.println("hey");
  	   return infoBoardService.infoBoardDetail(infoBoardSeq);
     }
+    
+    @GetMapping("/next") public Long nextBoard(Long infoBoardSeq) {
+		
+		Long detail = infoBoardService.nextBoard(infoBoardSeq);
+		
+		return detail;
+		
+		
+	}
 	
 }

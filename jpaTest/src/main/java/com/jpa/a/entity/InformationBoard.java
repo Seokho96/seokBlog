@@ -43,6 +43,9 @@ public class InformationBoard {
 	@Column(name = "wdate", nullable = false, updatable = true)
 	private String wdate;
 	
+	@Column(name ="del_date", nullable = true, updatable = true)
+	private String delDate;
+	
 	@Column(name = "category", nullable = false, updatable = true)
 	private String category;
 	
