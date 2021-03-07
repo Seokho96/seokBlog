@@ -36,6 +36,9 @@ public class Comment {
 	@Column(name = "wdate", nullable = false, updatable = true)
 	private Date wdate;
 	
+	@Column(name = "delDate", nullable = false, updatable = true)
+	private Date delDate;
+	
 	
 	public Comment(String userName, String conts, Date wdate) {
 		this.userName= userName;		

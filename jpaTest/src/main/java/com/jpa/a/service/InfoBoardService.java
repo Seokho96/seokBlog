@@ -76,11 +76,11 @@ public class InfoBoardService {
    
 	public void update(String infoBoardSeq, String title, String conts, String image, String category) { 
     	
-   	 SimpleDateFormat format2 = new SimpleDateFormat ( "yyyy년 MM월dd일 HH시mm분ss초");
+         SimpleDateFormat format2 = new SimpleDateFormat ("yyyy. MM. dd. HH:mm");
 		 Date date = new Date();
 		 String wdate = format2.format(date);
 		 
-   	infoBoardRepository.updateInfo(Long.parseLong(infoBoardSeq), title, conts, image, wdate);
+         infoBoardRepository.updateInfo(Long.parseLong(infoBoardSeq), title, conts, image, wdate);
    }
 	
 	public Long nextBoard(Long infoBoardSeq) {
