@@ -42,6 +42,7 @@ public class EngWordService {
 		List<EngWordQuestion> list = paging.getContent();
 	//	List<EngWordQuestion> total = engWordQuetionRepository.findByDelDateIsNull();
 		Long totalPage = engWordQuetionRepository.engWordQuestionCount();
+		System.out.println(totalPage);
 		Map<String , Object> map = new HashMap<String, Object>();
 		map.put("wordList", list);
 		map.put("totalPage", totalPage);

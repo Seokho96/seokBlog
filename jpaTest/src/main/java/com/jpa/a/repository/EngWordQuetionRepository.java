@@ -24,7 +24,7 @@ public interface EngWordQuetionRepository extends JpaRepository<EngWordQuestion,
 	List<EngWordQuestion> findByDelDateIsNull();
 	
 	
-	@Query("select count(i.qSeq) from EngWordQuestion i where i.delDate is not null")
+	@Query("select count(i.qSeq) from EngWordQuestion i where i.delDate is null")
 	Long engWordQuestionCount();
 
 	
