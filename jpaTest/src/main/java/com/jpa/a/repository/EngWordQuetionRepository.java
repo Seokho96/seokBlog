@@ -20,12 +20,18 @@ import com.jpa.a.entity.InformationBoard;
 public interface EngWordQuetionRepository extends JpaRepository<EngWordQuestion, Long>{
 
 	Page<EngWordQuestion> findByDelDateIsNull(Pageable pageable);
+//	Page<EngWordQuestion> findByDelDateIsNullOrderByRand(Pageable pageable);
 	
 	List<EngWordQuestion> findByDelDateIsNull();
 	
 	
+	  @Query("select i from EngWordQuestion i where i.delDate is null order by rand()") 
+	  List<EngWordQuestion> getTestQuestion();
+	
 	@Query("select count(i.qSeq) from EngWordQuestion i where i.delDate is null")
 	Long engWordQuestionCount();
+	
+
 
 	
 }

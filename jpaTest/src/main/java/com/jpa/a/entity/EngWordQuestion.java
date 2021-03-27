@@ -34,10 +34,10 @@ public class EngWordQuestion {
 	@Column(name = "translate", nullable = false, updatable = true)
 	private String translate;
 
-	@Column(name = "creDate", nullable = true, updatable = true, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+	@Column(name = "creDate", nullable = true, updatable = true, columnDefinition = "datetime default now()")
 	private Timestamp creDate;
 	
-	@Column(name = "delDate", nullable = true, updatable = true, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+	@Column(name = "delDate", nullable = true, updatable = true, columnDefinition = "datetime default now()")
 	private Timestamp delDate;
 	
 	

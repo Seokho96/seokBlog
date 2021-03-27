@@ -14,6 +14,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.jpa.a.entity.EngWordQuestion;
+import com.jpa.a.entity.EngWordWrongAnswer;
 import com.jpa.a.repository.EngWordQuetionRepository;
 import com.jpa.a.repository.EngWordResultRepository;
 import com.jpa.a.repository.EngWrongAnswerRepository;
@@ -35,11 +36,24 @@ public class EngWordService {
 	
 		engWordQuetionRepository.save(param);
 		// param.setCreDate(wdate);
+		
+//		List<EngWordQuestion> list = engWordQuetionRepository.findAll();
+//		System.out.println(list.size());
+//		EngWordWrongAnswer en = new EngWordWrongAnswer();
+//		for (int i = 0; i < list.size(); i++) {
+//			
+//			en.setEngWordQuestion(typeRepo);
+////			engWrongAnswerRepository.save(en);
+//			
+//			System.out.println(en.getEngWordQuestion());
+//		}
 	}
 	
 	public Map<String , Object> getWords(Pageable pageable) {
 		Page<EngWordQuestion> paging = engWordQuetionRepository.findByDelDateIsNull(pageable);
 		List<EngWordQuestion> list = paging.getContent();
+		
+		
 	//	List<EngWordQuestion> total = engWordQuetionRepository.findByDelDateIsNull();
 		Long totalPage = engWordQuetionRepository.engWordQuestionCount();
 		System.out.println(totalPage);
@@ -48,4 +62,16 @@ public class EngWordService {
 		map.put("totalPage", totalPage);
 		return map;
 	}
+	
+	public List<EngWordQuestion> getTestQuestion(){
+		List<EngWordQuestion> list = engWordQuetionRepository.getTestQuestion();
+		//List<EngWordQuestion> list = paging.getContent();
+		return list.subList(0, 30);
+	}
+	
+//	public void updateWrong(String qSeq) {
+//		engWrongAnswerRepository.updateWrong(Long.parseLong(qSeq));
+//	}
+	
+	
 }

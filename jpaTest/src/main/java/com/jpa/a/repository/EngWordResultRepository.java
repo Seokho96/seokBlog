@@ -7,5 +7,7 @@ import com.jpa.a.entity.EngWordResult;
 
 @Repository
 public interface EngWordResultRepository extends JpaRepository<EngWordResult, Long> {
+	
+	
 
 }
