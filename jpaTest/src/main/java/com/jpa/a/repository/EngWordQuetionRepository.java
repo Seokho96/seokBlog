@@ -19,6 +19,10 @@ import com.jpa.a.entity.InformationBoard;
 @Repository
 public interface EngWordQuetionRepository extends JpaRepository<EngWordQuestion, Long>{
 
+	Page<EngWordQuestion> findAllByDelDateIsNullAndWord(String word, Pageable pageable);
+	
+	Page<EngWordQuestion> findAllByDelDateIsNullAndTranslateLike(String word, Pageable pageable);
+	
 	Page<EngWordQuestion> findByDelDateIsNull(Pageable pageable);
 //	Page<EngWordQuestion> findByDelDateIsNullOrderByRand(Pageable pageable);
 	
@@ -30,6 +34,9 @@ public interface EngWordQuetionRepository extends JpaRepository<EngWordQuestion,
 	
 	@Query("select count(i.qSeq) from EngWordQuestion i where i.delDate is null")
 	Long engWordQuestionCount();
+	
+	@Query("select count(i.qSeq) from EngWordQuestion i where i.delDate is null and i.word = :word or i.translate like %:word%")
+	Long engWordSearchQuestionCount(@Param("word") String searchWord);
 	
 
 

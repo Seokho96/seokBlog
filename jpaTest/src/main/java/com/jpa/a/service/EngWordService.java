@@ -49,13 +49,29 @@ public class EngWordService {
 //		}
 	}
 	
-	public Map<String , Object> getWords(Pageable pageable) {
-		Page<EngWordQuestion> paging = engWordQuetionRepository.findByDelDateIsNull(pageable);
-		List<EngWordQuestion> list = paging.getContent();
+	public Map<String , Object> getWords(String type, String searchWord, Pageable pageable) {
 		
+		Page<EngWordQuestion> paging = null;
+		Long totalPage = null;
+		
+		if(searchWord == "" || searchWord == null) {
+			paging = engWordQuetionRepository.findByDelDateIsNull(pageable);
+			totalPage = engWordQuetionRepository.engWordQuestionCount();
+		}
+		else if(searchWord != "" && searchWord != null && type.equals("english")){
+			paging = engWordQuetionRepository.findAllByDelDateIsNullAndWord(searchWord, pageable);
+			totalPage = engWordQuetionRepository.engWordSearchQuestionCount(searchWord);
+		}
+		else {
+			paging = engWordQuetionRepository.findAllByDelDateIsNullAndTranslateLike(searchWord, pageable);
+			totalPage = engWordQuetionRepository.engWordSearchQuestionCount(searchWord);
+		}
+		
+		List<EngWordQuestion> list = paging.getContent();
+		System.out.println(list.size());
 		
 	//	List<EngWordQuestion> total = engWordQuetionRepository.findByDelDateIsNull();
-		Long totalPage = engWordQuetionRepository.engWordQuestionCount();
+		
 		System.out.println(totalPage);
 		Map<String , Object> map = new HashMap<String, Object>();
 		map.put("wordList", list);

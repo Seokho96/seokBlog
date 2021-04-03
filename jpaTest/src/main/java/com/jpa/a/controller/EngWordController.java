@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.jpa.a.entity.EngWordQuestion;
@@ -30,9 +30,10 @@ public class EngWordController {
 
 	
 	@GetMapping("/getWords")
-	public Map<String , Object> getWords(@PageableDefault(size = 5, direction = Sort.Direction.DESC, sort = {"qSeq"}) Pageable pageRequest) {
-		
-		Map<String , Object> map = engWordService.getWords(pageRequest);
+	public Map<String , Object> getWords(@RequestParam("type") String type, @RequestParam("searchWord") String searchWord, @PageableDefault(size = 5, direction = Sort.Direction.DESC, sort = {"qSeq"}) Pageable pageRequest) {
+		System.out.println(type != null ? type : "null");
+		System.out.println(searchWord != null ? searchWord : "null");
+		Map<String , Object> map = engWordService.getWords(type, searchWord, pageRequest);
 		
 		// Map<String , Object> map = new HashMap<String, Object>();
 		 
