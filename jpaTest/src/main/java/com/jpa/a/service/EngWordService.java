@@ -59,7 +59,7 @@ public class EngWordService {
 			totalPage = engWordQuetionRepository.engWordQuestionCount();
 		}
 		else if(searchWord != "" && searchWord != null && type.equals("english")){
-			paging = engWordQuetionRepository.findAllByDelDateIsNullAndWord(searchWord, pageable);
+			paging = engWordQuetionRepository.findAllByDelDateIsNullAndWordLike(searchWord, pageable);
 			totalPage = engWordQuetionRepository.engWordSearchQuestionCount(searchWord);
 		}
 		else {
